@@ -34,19 +34,19 @@ union() {
             ])
             translate([0, 0, -H / 2 - EPS])
             linear_extrude(height=H + 2 * EPS)
-            circle(r=R, $fn=500);
+            circle(r=R, $fn=60);
         }
         
         
         translate([0, 0, -H - EPS])
-        flat_sier(3, z_scale=0.5, also_children=true)
+        flat_sier(2, z_scale=0.8, also_children=true)
         /*
             linear_extrude(height=2 * (H + EPS))
             translate([0, 1 / (2 * sqrt(3))])
             circle(0.165, $fn=100);
         */
         translate([0, 1 / (2 * sqrt(3)), 0.18])
-        sphere(r=0.18, $fn=60);
+        sphere(r=0.18, $fn=30);
     }
     
     for (theta = [0, 120, 240]) {
@@ -72,7 +72,7 @@ module flat_sier(n, side_len=1, z_scale=0.5, also_children=false) {
     if (n > 1) {
         for (offset = [
             [0, sl * sqrt(3) / 2],
-            [-0.5 * sl, 0],
+           [-0.5 * sl, 0],
             [0.5 * sl, 0]
         ]) {
             scale([0.5, 0.5, z_scale])
@@ -89,7 +89,7 @@ module flat_sier(n, side_len=1, z_scale=0.5, also_children=false) {
 }
 
 module torus(inner_r, outer_r) {
-    rotate_extrude($fn=100)
+    rotate_extrude($fn=30)
         translate([inner_r, 0, 0])
         circle(r = outer_r - inner_r);
 }
